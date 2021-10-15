@@ -1,0 +1,152 @@
+class Node{
+    int data;
+    Node next;
+}
+public class MyClass {
+    Node head;
+    
+    void insert(int data)
+    {
+        Node n=new Node();
+        n.data=data;
+        n.next=null;
+        if(head==null)
+        {
+            head=n;
+        }
+        else{
+            Node h=head;
+            while(h.next!=null)
+            {
+                h=h.next;
+            }
+            h.next=n;
+            
+            
+        }
+    }
+    void reverseLinkList(){
+        //Node h=head;
+        Node pre=null;
+        Node curr=head;
+        Node next=null;
+        while(curr!=null)
+        {
+            next=curr.next;
+            curr.next=pre;
+             pre=curr;
+            curr=next;
+        }
+        head=pre;
+    }
+    void print(){
+        Node h=head;
+        while(h.next!=null)
+        {
+            System.out.println(h.data);
+            h=h.next;
+        }
+        System.out.println(h.data);
+        
+    }
+    void midOfLinkList(){
+        
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        System.out.println(slow.data);
+        
+            
+    }
+    void reverseMidOfLinkList(){
+        
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        //System.out.println(slow.data);
+        Node h= head;
+        while(h!=slow)
+        {
+            h=h.next;
+        }
+        Node head2;
+        head2=slow.next;
+        slow.next=null;
+        
+        
+        //Node h=head;
+        while(head.next!=null)
+        {
+            System.out.println(head.data);
+            head=head.next;
+        }
+        System.out.println(head.data);
+        
+        
+        System.out.println("---------------------------------------");
+        
+        
+       
+       
+        Node h2=head2;
+
+        Node pre=null;
+        Node curr=head2;
+        Node next=null;
+        while(curr!=null)
+        {
+            next=curr.next;
+            curr.next=pre;
+            pre=curr;
+            curr=next;
+        }
+        head2=pre;
+        while(head2.next!=null)
+        {
+            System.out.println(head2.data);
+            head2=head2.next;
+        }
+        System.out.println(head2.data);
+        
+        System.out.println("---------------------------------------");
+        
+        Node temp=null;
+        while(h.next!=null)
+        {
+            temp=h.next;
+            h.next=h2;
+            h=temp;
+            temp=h2.next;
+            h2=temp;
+        }
+        
+        while(head.next!= null)
+        {
+            System.out.println(head.data);
+            head=head.next;
+        }
+        
+    }
+    public static void main(String args[]) {
+        MyClass ll= new MyClass();
+        ll.insert(1);
+        ll.insert(2);
+        ll.insert(3);
+        ll.insert(4);
+        ll.insert(5);
+        //ll.print();
+        //System.out.println("---------------------------------");
+       // ll.reverseLinkList();
+        //ll.midOfLinkList();
+       // ll.print();
+        ll.reverseMidOfLinkList();
+    }
+}
